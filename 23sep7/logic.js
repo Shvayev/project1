@@ -1,5 +1,4 @@
-//onLoad 
-//1.create task block 
+ //1.create task block 
 //2.create task with data 
 //3.delete one task 
 //4.clear all tasks 
@@ -19,7 +18,6 @@ function onLoad() {
 let createTask = () => {
     let taskNote = document.getElementById("wrapper");
     taskNote.innerHTML = "";
-    let task = "";
     for (let i = 0; i < taskList.length; i++) {
         task += `
     <li class="task">
