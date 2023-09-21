@@ -1,12 +1,4 @@
-//onLoad 
-//1.create task block 
-//2.create task with data 
-//3.delete one task 
-//4.clear all tasks 
-//5.save task data 
-//6.load task data  
-//7.clear form 
-// Variables to store task data
+// store task data
 var taskList = [];
 
 // onLoad
@@ -17,23 +9,41 @@ function onLoad() {
 
 // 1. Create the task block
 let createTask = () => {
-    let taskNote = document.getElementById("wrapper");
-    let task = "";
+    let taskContainer = document.getElementById("container");
+    taskContainer.innerHTML = "";
+    taskContainer.style.display = "flex"; // Set the display to flex
+
     for (let i = 0; i < taskList.length; i++) {
-        task += `
-    <li class="task">
-        <div class="btn">
-          <button onclick="deleteTask(${i})" class="btn"><i class="bi bi-x"></i></button>
-        </div>
-        <div class="task-content">
-          <span>${taskList[i].content}</span>
-          <div>${taskList[i].date}</div>
-          <div>${taskList[i].time}</div>
-        </div>
-      </li>
-    `;
+        let taskDiv = document.createElement("div");
+        taskDiv.classList.add("task");
+
+        // note background
+        let imageUrl = taskList[i].image;
+        taskDiv.style.backgroundImage = `url(${imageUrl})`;
+
+
+        let deleteButton = document.createElement("button");
+        deleteButton.innerText = "x";
+        deleteButton.onclick = () => deleteTask(i); // i is the offset
+
+        let taskContent = document.createElement("div");
+        taskContent.classList.add("task-content");
+        let contentSpan = document.createElement("span");
+        contentSpan.innerText = taskList[i].content;
+        let dateDiv = document.createElement("div");
+        dateDiv.innerText = "Date: " + taskList[i].date;
+        let timeDiv = document.createElement("div");
+        timeDiv.innerText = "Time: " + taskList[i].time;
+
+        taskContent.appendChild(contentSpan);
+        taskContent.appendChild(dateDiv);
+        taskContent.appendChild(timeDiv);
+
+        taskDiv.appendChild(deleteButton);
+        taskDiv.appendChild(taskContent);
+
+        taskContainer.appendChild(taskDiv);
     }
-    taskNote.innerHTML = task;
     saveTasks(taskList);
 };
 
@@ -42,21 +52,17 @@ function dataTask() {
     let content = document.getElementById("content").value;
     let time = document.getElementById("time").value;
     let date = document.getElementById("date").value;
+    // Check if any of the fields are empty
+    if (content === "" || time === "" || date === "") {
+        alert("Please fill in all the fields before adding a task.");
+        return; // Exit the function if any field is empty
+    }
+
+    //creating the task if all fields are filled
     addTask(content, date, time);
 
     // Reset the form after submit
     document.getElementById("taskForm").reset();
-}
-// Create a new JSON to represent a new task
-function addTask(content, date, time) {
-    let task = {
-        content,
-        date,
-        time,
-    };
-    let tasks = getTasks();
-    tasks.push(task);
-    saveTasks(tasks);
 
     // Display the task note below the form
     const taskNote = document.getElementById("taskNote");
@@ -71,6 +77,40 @@ function addTask(content, date, time) {
     }, 2000);
 }
 
+// 3. Add a new task
+function addTask(content, date, time) {
+    const task = {
+        content,
+        date,
+        time,
+    };
+    let tasks = getTasks();
+    tasks.push(task);
+    saveTasks(tasks);
+    taskList = tasks;
+    createTask();
+}
+
+//note image background
+let addTasks = (content, date, time) => {
+
+    let imageUrl = "assets/notebg.png";
+
+    let task = {
+        content,
+        date,
+        time,
+        image: imageUrl,
+    };
+    let tasks = getTasks();
+    tasks.push(task);
+    saveTasks(tasks);
+
+    // Refresh the task list
+    createTask();
+}
+
+
 
 
 // 4. Delete one task
@@ -80,14 +120,20 @@ function deleteTask(offset) {
     const tasks = getTasks();
     tasks.splice(offset, 1);
     saveTasks(tasks);
+    taskList = tasks; // Update the taskList variable
+    createTask();
 }
 
 // 5. Delete - clear all tasks
 function clearAll() {
     let removeAllConfirm = confirm("Clear all?");
     if (!removeAllConfirm) return;
-    taskList.splice(0); // Clears the array
-    saveTasks([]);
+    // Clear the taskList array
+    taskList = [];
+    // Clear the tasks stored in local storage
+    localStorage.removeItem("tasks");
+    // Update the task display
+    createTask();
 }
 
 // 6. Save tasks array to local storage
