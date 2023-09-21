@@ -91,7 +91,7 @@ function addTask(content, date, time) {
     createTask();
 }
 
-//note image background
+//!!!!!!!!note image background
 let addTasks = (content, date, time) => {
 
     let imageUrl = "assets/notebg.png";
@@ -110,9 +110,6 @@ let addTasks = (content, date, time) => {
     createTask();
 }
 
-
-
-
 // 4. Delete one task
 function deleteTask(offset) {
     let removeConfirm = confirm("Delete?");
@@ -128,9 +125,9 @@ function deleteTask(offset) {
 function clearAll() {
     let removeAllConfirm = confirm("Clear all?");
     if (!removeAllConfirm) return;
-    // Clear the taskList array
+    // Clear the taskList []
     taskList = [];
-    // Clear the tasks stored in local storage
+    // Clear the tasks in local storage
     localStorage.removeItem("tasks");
     // Update the task display
     createTask();

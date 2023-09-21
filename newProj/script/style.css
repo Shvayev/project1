@@ -1,41 +1,34 @@
+@font-face {
+    font-family: "PTSans";
+    src: url("../fonts/PTSans-Regular.ttf");
+}
+
 * {
     margin: 0;
     padding: 0;
+    font-family: "PTSans", sans-serif;
+}
+
+body {
+    text-align: center;
+    background-image: url("/assets/images/background.jpeg");
     box-sizing: border-box;
 }
 
-
-body {
-    background-image: url("assets/title board.jpg");
-    background-position: 50%;
-    text-align: center;
-}
-
-.header {
-    text-align: center;
-}
-
-.task {
-    background-image: url("assets/notebg.png");
-    background-size: 250px 250px;
-    background-repeat: no-repeat;
+#tasksForm {
+    width: 50%;
+    max-width: 300px;
+    height: 150px;
+    max-height: 300px;
+    list-style: none;
+    background-image: url("assets/images/form.jpeg");
+    background-size: contain;
     background-position: center;
-    position: relative;
-
-}
-
-.taskForm {
-    background-image: url("assets/form.jpg");
+    border-radius: 6px;
+    padding: 20px 20px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    width: 50%;
-    max-width: 1000px;
-    margin: 0 auto;
-    gap: 20px;
-    border: 1px solid #333;
-    padding: 20px;
-    border-radius: 6px;
-    box-shadow: 2px 2px 10px black;
 }
 
 .container {
@@ -46,13 +39,15 @@ body {
     justify-content: center;
 }
 
+li {
+    list-style: none;
+}
 
 .task {
-    background-image: url("assets/notebg.png");
+    background-image: url("assets/images/note.jpeg");
     background-size: 250px 250px;
     background-repeat: no-repeat;
 }
-
 
 .task .taskText {
     display: block;
@@ -67,38 +62,22 @@ body {
     overflow-y: scroll;
 }
 
-/* .task .btn button {
+.task .icon button {
     margin-left: 150px;
     background: transparent;
     border: none;
     font-size: 24px;
     opacity: 0;
-} */
+}
 
-/* .task:hover .btn button {
+.task:hover .icon button {
     opacity: 1;
-} */
+}
 
-.task .date,
-.task .time {
+.task .taskDate,
+.task .taskTime {
     text-align: left;
     margin-left: 10px;
-}
-
-/* Define fadeIn animation */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-/* Apply fadeIn animation to specific elements */
-.fadeIn-container {
-    animation: fadeIn 2s;
 }
 
 /* #container {
@@ -107,7 +86,7 @@ body {
   max-width: 300px;
   height: 250px;
   max-height: 300px;
-  background-image: url("assets/notebg.png");
+  background-image: url("assets/images/note.jpeg");
   background-size: contain;
   background-position: center;
   border-radius: 6px;
@@ -118,3 +97,17 @@ body {
   overflow-x: hidden;
   overflow-y: scroll;
 } */
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.fadeIn-container {
+    animation: fadeIn 2s;
+}

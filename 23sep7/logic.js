@@ -1,11 +1,4 @@
- //1.create task block 
-//2.create task with data 
-//3.delete one task 
-//4.clear all tasks 
-//5.save task data 
-//6.load task data  
-//7.clear form 
-// Variables to store task data
+//store task data
 var taskList = [];
 
 // onLoad
