@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="logic.js"></script>
+    <link rel="stylesheet" href="style1.css">
+    <title>my notes</title>
+</head>
+
+<body onload="onload()">
+    <div class="header" action="javascript:submitForm()">
+        <h1><img src="assets/title.png"></h1>
+    </div>
+
+    <div>
+        <!--form for a new task-->
+        <form class="taskForm" id="taskForm">
+            <input type="text" placeholder="write down here what you need to do..." id="content"
+                style="background-image: url(assets/form.jpg);" required>
+            <input type="date" placeholder="enter a date" id="date" style="background-image: url(assets/form.jpg);"
+                required>
+            <input type="time" placeholder="when?" id="time" style="background-image: url(assets/form.jpg);" required>
+            <input type="button" onclick="dataTask()" id="btn" value="ADD TASK"
+                style="background-image: url(assets/form.jpg);">
+        </form>
+        <div id="taskNote" class="task-note"></div>
+    </div> <br>
+    <!-- <div id="tasklist" class="hidden">
+        <img src="assets/notebg.png" alt="image">
+        <p>kkkk</p>
+    </div> -->
+    <div class="container" id="container"></div>
+    <!-- <section>
+        <div id="wrapper" class="wrapper"></div>
+    </section> -->
+</body>
+
+</html>

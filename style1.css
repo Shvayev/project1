@@ -1,0 +1,124 @@
+.header {
+    text-align: center;
+}
+
+* {
+    background-image: url("assets/title\ board.jpg");
+    background-position: 50%;
+}
+
+.taskForm {
+    background-image: url("assets/form.jpg");
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 20px;
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 2px 2px 10px black;
+}
+
+/* .hidden {
+    display: none;
+} */
+
+/* @font-face {
+    font-family: "PTSans";
+    src: url("/assets/font/Sandler\ Trial.otf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    text-align: center;
+    background-image: url("/assets/image/tile.jpg");
+    /* box-sizing: border-box; }
+    */
+
+
+/* #taskForm {
+    width: 50%;
+    max-width: 300px;
+    height: 150px;
+    max-height: 300px;
+    list-style: none;
+    background-image: url("/assets/image/formbg.jpg");
+    background-size: contain;
+    background-position: center;
+    border-radius: 6px;
+    padding: 20px 20px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+} */
+
+.container {
+    margin: 50px;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, 350px);
+    justify-content: center;
+}
+
+li {
+    list-style: none;
+}
+
+.task {
+    background-image: url("/assets/image/notebg.png");
+    background-size: 250px 250px;
+    background-repeat: no-repeat;
+}
+
+*/ .task .taskText {
+    display: block;
+    margin-top: 16px;
+    text-align: left;
+    margin-left: 20px;
+    min-height: 150px;
+    min-width: 250px;
+    max-width: 250px;
+    max-height: 150px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.task .btn button {
+    margin-left: 150px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    opacity: 0;
+}
+
+.task:hover .btn button {
+    opacity: 1;
+}
+
+.task .date,
+.task .time {
+    text-align: left;
+    margin-left: 10px;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.fadeIn-container {
+    animation: fadeIn 2s;
+}
