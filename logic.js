@@ -42,10 +42,21 @@ function dataTask() {
     let content = document.getElementById("content").value;
     let time = document.getElementById("time").value;
     let date = document.getElementById("date").value;
-    addTasks(content, date, time);
+    addTask(content, date, time);
 
     // Reset the form after submit
     document.getElementById("taskForm").reset();
+}
+// Create a new JSON to represent a new task
+function addTask(content, date, time) {
+    let task = {
+        content,
+        date,
+        time,
+    };
+    let tasks = getTasks();
+    tasks.push(task);
+    saveTasks(tasks);
 
     // Display the task note below the form
     const taskNote = document.getElementById("taskNote");
@@ -59,30 +70,8 @@ function dataTask() {
         taskNote.classList.remove("fadeIn-task");
     }, 2000);
 }
-// Create a new JSON to represent a new task
-let addTasks = (content, date, time) => {
-    let task = {
-        content,
-        date,
-        time,
-    };
-    let tasks = getTasks();
-    tasks.push(task);
-    saveTasks(tasks);
-}
 
 
-// 3. Create a new JSON to represent a new task
-// function addTasks(content, date, time) {
-//     const task = {
-//         content,
-//         date,
-//         time,
-//     };
-//     let tasks = getTasks();
-//     tasks.push(task);
-//     saveTasks(tasks);
-// }
 
 // 4. Delete one task
 function deleteTask(offset) {
